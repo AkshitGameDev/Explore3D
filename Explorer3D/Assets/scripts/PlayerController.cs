@@ -61,12 +61,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    int Input(){
-        input 
-
-        return 0;
-    }
-
     void GroundChecker()
     {
         Vector3 origin = new Vector3(
@@ -78,8 +72,4 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics.Raycast(origin, Vector3.down, 0.3f, groundLayer);
     }
 
-    void FixedUpdate()
-    {
-        
-    }
 }
