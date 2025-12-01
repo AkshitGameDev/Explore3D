@@ -755,11 +755,9 @@ MonoBehaviour:
   onShoot:
     m_PersistentCalls:
       m_Calls: []
-  animator: {fileID: 102908913}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  speed: 5
   moveDir: {x: 0, y: 0, z: 0}
 --- !u!23 &1483050114
 MeshRenderer:
