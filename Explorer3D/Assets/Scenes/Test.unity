@@ -296,7 +296,7 @@ MonoBehaviour:
   xAxis:
     Value: 300
     Center: 0
-    Range: {x: 0, y: 0}
+    Range: {x: -180, y: 180}
     Wrap: 0
     Recentering:
       Enabled: 0
@@ -306,14 +306,14 @@ MonoBehaviour:
   yAxis:
     Value: 300
     Center: 0
-    Range: {x: 0, y: 0}
+    Range: {x: -60, y: 60}
     Wrap: 0
     Recentering:
       Enabled: 0
       Wait: 0
       Time: 0
     Restrictions: 0
-  camFollowPos: {fileID: 0}
+  camFollowPos: {fileID: 1542305263}
   sensitivity: 1
 --- !u!1 &238800223
 GameObject:
