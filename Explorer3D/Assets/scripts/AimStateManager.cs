@@ -15,7 +15,7 @@ public class AimStateManager : MonoBehaviour
         if (Mouse.current == null) return;
 
         // mouse delta
-        Vector2 delta = Mouse.current.delta.ReadValue() * sensitivity * Time.deltaTime;
+        Vector2 delta = Mouse.current.delta.ReadValue() * 10.0f * sensitivity * Time.deltaTime;
 
         // yaw (left/right)
         xAxis.Value = xAxis.ClampValue(xAxis.Value + delta.x);
