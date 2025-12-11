@@ -1,7 +1,8 @@
 using UnityEngine;
+using System;
 public class MovementSateManager : MonoBehaviour
 {
-
+    
     public float movespeed = 3f;
     float hzInput, vInput;
     [HideInInspector] public Vector3 dir;
@@ -22,15 +23,20 @@ public class MovementSateManager : MonoBehaviour
     public RunState runState = new RunState();
     public CrouchState crouchState = new CrouchState();
 
+    [HideInInspector] public Animator anim;
+
 
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         controller = GetComponent<CharacterController>();
         SwitchState(idleState);
     }
 
     public void SwitchState(MovementBaseState state)
     {
+        Debug.Log("Switched to " + state.GetType().Name);
+
         currentState = state;
         currentState.EnterState(this);
     }
@@ -41,6 +47,10 @@ public class MovementSateManager : MonoBehaviour
     {
         GetDirectionsAndMove();
         ApplyGravity();
+
+        anim.SetFloat("hzInput", hzInput);
+        anim.SetFloat("vInput", vInput);
+
         currentState.UpdateState(this);
     }
 
