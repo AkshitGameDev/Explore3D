@@ -21,7 +21,6 @@ public class MovementSateManager : MonoBehaviour
         controller = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         GetDirectionsAndMove();
