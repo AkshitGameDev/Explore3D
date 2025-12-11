@@ -1,16 +1,9 @@
-using UnityEngine;
 
-public class MovementBaseState : MonoBehaviour
+public abstract class MovementBaseState
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public abstract void EnterState(MovementSateManager movsement);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract void UpdateState(MovementSateManager movement);
+
+
 }

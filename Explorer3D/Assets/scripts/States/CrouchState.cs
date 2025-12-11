@@ -1,16 +1,15 @@
 using UnityEngine;
 
-public class CrouchState : MonoBehaviour
+public class CrouchState : MovementBaseState
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+ 
+    public override void EnterState(MovementSateManager movement)
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+   public override void UpdateState(MovementSateManager movement)
     {
-        
+      
     }
 }

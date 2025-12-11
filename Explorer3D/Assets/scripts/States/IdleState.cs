@@ -1,16 +1,22 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class IdleState : MonoBehaviour
+public class IdleState : MovementBaseState
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    public override void EnterState(MovementSateManager movement)
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void UpdateState(MovementSateManager movement)
     {
+        if (movement.dir.magnitude > 0.1f)
+        {
+            if (Input.GetKey(KeyCode.LeftShift)) movement.SwitchState(movement.runState);
+            else movement.SwitchState(movement.walkState);
+        }
+        if(Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.LeftControl)) movement.SwitchState(movement.crouchState);
         
     }
 }

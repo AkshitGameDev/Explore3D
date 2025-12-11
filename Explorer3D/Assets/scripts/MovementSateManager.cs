@@ -16,15 +16,32 @@ public class MovementSateManager : MonoBehaviour
     float gravity = -9.81f;
     Vector3 velocity;
 
+    MovementBaseState currentState;
+    public IdleState idleState = new IdleState();
+    public WalkState walkState = new WalkState();
+    public RunState runState = new RunState();
+    public CrouchState crouchState = new CrouchState();
+
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        SwitchState(idleState);
     }
+
+    public void SwitchState(MovementBaseState state)
+    {
+        currentState = state;
+        currentState.EnterState(this);
+    }
+
+
 
     void Update()
     {
         GetDirectionsAndMove();
         ApplyGravity();
+        currentState.UpdateState(this);
     }
 
     void GetDirectionsAndMove()
