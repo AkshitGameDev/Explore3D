@@ -18,6 +18,9 @@ public class CrouchState : MovementBaseState
             else ExitState(movement, movement.idleState);
         }
 
+        if (movement.returnVerticalInput() < 0) movement.AlterMovementSpeed("cb");
+        else movement.AlterMovementSpeed("c");
+
     }
     void ExitState(MovementSateManager movement, MovementBaseState state)
     {

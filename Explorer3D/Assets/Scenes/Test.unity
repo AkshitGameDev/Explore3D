@@ -192,7 +192,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd8bb33914512e4faae399d7beb3b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementSateManager
-  movespeed: 3
+  currentMoveSpeed: 0
+  walkSpeed: 3
+  walkBackSpeed: 1.8
+  runSpeed: 6.2
+  runBackSpeed: 4.8
+  crouchSpeed: 1.8
+  crouchBackSpeed: 1
   dir: {x: 0, y: 0, z: 0}
   groundYoffset: 0.6
   groundMask:
@@ -234,6 +240,7 @@ MonoBehaviour:
     Restrictions: 0
   camFollowPos: {fileID: 1542305263}
   sensitivity: 1.6
+  anim: {fileID: 0}
 --- !u!1 &238800223
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,7 +764,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1542305263}
-  - component: {fileID: 1542305264}
   m_Layer: 0
   m_Name: CameraFollowPos
   m_TagString: Untagged
@@ -780,40 +786,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 199935876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1542305264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1542305262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89100a841bacc7945a1dbaf0752207d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  xAxis:
-    Value: 0
-    Center: 0
-    Range: {x: 0, y: 0}
-    Wrap: 0
-    Recentering:
-      Enabled: 0
-      Wait: 0
-      Time: 0
-    Restrictions: 0
-  yAxis:
-    Value: 0
-    Center: 0
-    Range: {x: 0, y: 0}
-    Wrap: 0
-    Recentering:
-      Enabled: 0
-      Wait: 0
-      Time: 0
-    Restrictions: 0
-  camFollowPos: {fileID: 0}
-  sensitivity: 1
 --- !u!1 &1717448483
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,9 @@ public class RunState : MovementBaseState
         if(Input.GetKeyUp(KeyCode.LeftShift)) ExitState(movement, movement.walkState);
         else if(movement.dir.magnitude == 0) ExitState(movement, movement.idleState);
 
+        if (movement.returnVerticalInput() < 0) movement.AlterMovementSpeed("rb");
+        else movement.AlterMovementSpeed("r");
+
     }
     void ExitState(MovementSateManager movement, MovementBaseState state)
     {
