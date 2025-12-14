@@ -4,11 +4,28 @@ using UnityEngine.InputSystem;
 
 public class AimStateManager : MonoBehaviour
 {
+
+    AimBaseState currentState;
+    public HipFireState hip = new HipFireState();
+    public AimState aim = new AimState();
     public InputAxis xAxis;
     public InputAxis yAxis;
 
     [SerializeField] Transform camFollowPos;
     [SerializeField] float sensitivity = 1f;
+
+    [HideInInspector] public Animator anim;
+
+    private void Awake()
+    {
+        anim = GetComponentInChildren<Animator>();
+        Debug.Log("AimStateManager Awake: ", anim);
+    }
+
+    void Start()
+    {
+        SwitchState(hip);
+    }
 
     void Update()
     {
@@ -22,22 +39,40 @@ public class AimStateManager : MonoBehaviour
 
         // pitch (up/down) - usually inverted
         yAxis.Value = yAxis.ClampValue(yAxis.Value - delta.y);
+
+        currentState.UpdateState(this);
     }
+
+    public void SwitchState(AimBaseState state)
+    {
+        currentState = state;
+        currentState.EnterState(this);
+    }
+
 
     void LateUpdate()
     {
-        // tilt camera pitch around X
-        camFollowPos.localEulerAngles = new Vector3(
-            yAxis.Value,
-            camFollowPos.localEulerAngles.y,
-            camFollowPos.localEulerAngles.z
+        // Clamp pitch (camera up/down)
+        float pitch = yAxis.Value;
+        pitch = Mathf.Clamp(pitch, -89.9f, 89.9f);
+
+        camFollowPos.localRotation = Quaternion.Euler(
+            pitch,
+            0f,
+            0f
         );
 
-        // rotate player yaw around Y
-        transform.eulerAngles = new Vector3(
-            transform.eulerAngles.x,
-            xAxis.Value,
-            transform.eulerAngles.z
+        // Wrap yaw (player left/right) — infinite rotation
+        float yaw = xAxis.Value;
+
+        if (yaw > 180f) yaw -= 360f;
+        if (yaw < -180f) yaw += 360f;
+
+        transform.rotation = Quaternion.Euler(
+            0f,
+            yaw,
+            0f
         );
     }
+
 }
