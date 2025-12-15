@@ -15,21 +15,33 @@ public class AimStateManager : MonoBehaviour
     [SerializeField] float sensitivity = 1f;
 
     [HideInInspector] public Animator anim;
+     public CinemachineCamera vCam;
+    public float adsFov = 40f;
+    [HideInInspector] public float hipFov;
+    [HideInInspector] public float curFov;
+    public float shoothSpeed = 10f;
 
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
         Debug.Log("AimStateManager Awake: ", anim);
+        vCam = GetComponentInChildren<CinemachineCamera>();
+
+        if (vCam == null)
+            Debug.LogError("CinemachineVirtualCamera not found!");
     }
 
     void Start()
     {
         SwitchState(hip);
+        hipFov = vCam.Lens.FieldOfView;
     }
 
     void Update()
     {
         if (Mouse.current == null) return;
+
+        vCam.Lens.FieldOfView = Mathf.Lerp(vCam.Lens.FieldOfView, curFov, Time.deltaTime * shoothSpeed);
 
         // mouse delta
         Vector2 delta = Mouse.current.delta.ReadValue() * 10.0f * sensitivity * Time.deltaTime;

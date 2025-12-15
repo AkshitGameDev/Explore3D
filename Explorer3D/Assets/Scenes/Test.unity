@@ -178,6 +178,7 @@ Transform:
   m_Children:
   - {fileID: 1542305263}
   - {fileID: 780154624}
+  - {fileID: 961059361}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &199935877
@@ -241,6 +242,11 @@ MonoBehaviour:
   camFollowPos: {fileID: 1542305263}
   sensitivity: 1.6
   anim: {fileID: 0}
+  vCam: {fileID: 0}
+  adsFov: 40
+  hipFov: 0
+  curFov: 0
+  shoothSpeed: 10
 --- !u!1 &238800223
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,7 +520,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 199935876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &961059362
 MonoBehaviour:
@@ -887,4 +893,3 @@ SceneRoots:
   - {fileID: 238800225}
   - {fileID: 1717448486}
   - {fileID: 199935876}
-  - {fileID: 961059361}
