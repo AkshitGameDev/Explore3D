@@ -21,9 +21,13 @@ public class AimStateManager : MonoBehaviour
     [HideInInspector] public float curFov;
     public float shoothSpeed = 10f;
 
+    [SerializeField] Transform aimPos;
+    [SerializeField] float aimSmoothSpeed = 20f;
+    [SerializeField] LayerMask aimMask;
+
     private void Awake()
     {
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponent<Animator>();
         Debug.Log("AimStateManager Awake: ", anim);
         vCam = GetComponentInChildren<CinemachineCamera>();
 
@@ -52,7 +56,12 @@ public class AimStateManager : MonoBehaviour
         // pitch (up/down) - usually inverted
         yAxis.Value = yAxis.ClampValue(yAxis.Value - delta.y);
 
+        Vector2 screenCenter = new Vector2(Screen.width, Screen.height) / 2f;
+        Ray ray = Camera.main.ScreenPointToRay(screenCenter);
+
         currentState.UpdateState(this);
+
+        if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, aimMask)) aimPos.position = Vector3.Lerp(aimPos.position, hit.point, Time.deltaTime * aimSmoothSpeed);
     }
 
     public void SwitchState(AimBaseState state)
