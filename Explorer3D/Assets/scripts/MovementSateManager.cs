@@ -31,7 +31,7 @@ public class MovementSateManager : MonoBehaviour
 
     void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
         SwitchState(idleState);
         currentMoveSpeed = walkSpeed;
