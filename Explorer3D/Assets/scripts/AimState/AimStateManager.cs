@@ -21,7 +21,7 @@ public class AimStateManager : MonoBehaviour
     [HideInInspector] public float curFov;
     public float shoothSpeed = 10f;
 
-    [SerializeField] Transform aimPos;
+    [SerializeField] Transform aimPos;  
     [SerializeField] float aimSmoothSpeed = 20f;
     [SerializeField] LayerMask aimMask;
 
