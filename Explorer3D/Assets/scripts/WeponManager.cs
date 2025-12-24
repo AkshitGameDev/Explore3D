@@ -37,8 +37,6 @@ public class WeponManager : MonoBehaviour
         if(!semiAuto && Input.GetKeyDown(shoot)) return true;
 
         return false;
-
-
     }
 
     void Fire()
