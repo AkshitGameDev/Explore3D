@@ -56,6 +56,7 @@ public class WeponManager : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, barrelPosition.position, barrelPosition.rotation);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             rb.AddForce(barrelPosition.forward * bulletVelocity, ForceMode.Impulse);
+            AudioManager.instance.PlayOneShot(AudioManager.instance.shootClip);
         }
     }
 }
