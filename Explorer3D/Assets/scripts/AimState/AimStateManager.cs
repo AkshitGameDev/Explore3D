@@ -21,7 +21,8 @@ public class AimStateManager : MonoBehaviour
     [HideInInspector] public float curFov;
     public float shoothSpeed = 10f;
 
-    [SerializeField] Transform aimPos;  
+    public Transform aimPos;
+    [HideInInspector] public Vector3 actualAimPos;
     [SerializeField] float aimSmoothSpeed = 20f;
     [SerializeField] LayerMask aimMask;
 
@@ -47,13 +48,10 @@ public class AimStateManager : MonoBehaviour
 
         vCam.Lens.FieldOfView = Mathf.Lerp(vCam.Lens.FieldOfView, curFov, Time.deltaTime * shoothSpeed);
 
-        // mouse delta
         Vector2 delta = Mouse.current.delta.ReadValue() * 10.0f * sensitivity * Time.deltaTime;
 
-        // yaw (left/right)
         xAxis.Value = xAxis.ClampValue(xAxis.Value + delta.x);
 
-        // pitch (up/down) - usually inverted
         yAxis.Value = yAxis.ClampValue(yAxis.Value - delta.y);
 
         Vector2 screenCenter = new Vector2(Screen.width, Screen.height) / 2f;
@@ -61,7 +59,12 @@ public class AimStateManager : MonoBehaviour
 
         currentState.UpdateState(this);
 
-        if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, aimMask)) aimPos.position = Vector3.Lerp(aimPos.position, hit.point, Time.deltaTime * aimSmoothSpeed);
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, aimMask))
+        {
+            aimPos.position = Vector3.Lerp(aimPos.position, hit.point, Time.deltaTime * aimSmoothSpeed);
+            actualAimPos = hit.point;
+        }
+
     }
 
     public void SwitchState(AimBaseState state)
