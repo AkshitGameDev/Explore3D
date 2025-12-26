@@ -14,7 +14,7 @@ public class WeponManager : MonoBehaviour
     [SerializeField] int bulletPerShot;
     AimStateManager aim;
 
-    KeyCode shoot = KeyBindings.instance.GetShootKey();
+    WeponAmmo ammo;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,6 +22,7 @@ public class WeponManager : MonoBehaviour
     {
         aim = GetComponentInParent<AimStateManager>();
         fireRateTimer = fireRate;
+        ammo = GetComponent<WeponAmmo>();
     }
 
     // Update is called once per frame
@@ -31,6 +32,7 @@ public class WeponManager : MonoBehaviour
         {
             Fire();
         }
+        Debug.Log("ammo: " + ammo.currentAmmo);
     }
 
     bool ShouldFire()
@@ -41,7 +43,10 @@ public class WeponManager : MonoBehaviour
         {
             return false;
         }
-        if(semiAuto && Input.GetKeyDown(KeyCode.Mouse0)) return true;
+
+        if(ammo.currentAmmo == 0) return false;
+
+        if (semiAuto && Input.GetKeyDown(KeyCode.Mouse0)) return true;
         if(!semiAuto && Input.GetKey(KeyCode.Mouse0)) return true;
 
         return false;
@@ -57,6 +62,7 @@ public class WeponManager : MonoBehaviour
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             rb.AddForce(barrelPosition.forward * bulletVelocity, ForceMode.Impulse);
             AudioManager.instance.PlayOneShot(AudioManager.instance.shootClip);
+            ammo.currentAmmo--;
         }
     }
 }
