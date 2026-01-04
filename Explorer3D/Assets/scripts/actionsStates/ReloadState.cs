@@ -1,16 +1,14 @@
 using UnityEngine;
 
-public class ReloadState : MonoBehaviour
+public class ReloadState : ActionBaseState
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void EnterState(ActionStateManager actions)
     {
-        
+        actions.anim.SetTrigger("reload");
+    }
+    public override void UpdateState(ActionStateManager actions)
+    {
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

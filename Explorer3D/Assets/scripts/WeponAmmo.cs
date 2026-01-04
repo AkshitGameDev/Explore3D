@@ -11,7 +11,15 @@ public class WeponAmmo : MonoBehaviour
         currentAmmo = clipSize;
     }
 
-    
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            Reload();
+        }
+    }
+
 
     public void Reload()
     {

@@ -1,16 +1,25 @@
 using UnityEngine;
 
-public class DefaltState : MonoBehaviour
+public  class DefaltState : ActionBaseState
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void EnterState(ActionStateManager actions)
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void UpdateState(ActionStateManager actions)
     {
-        
+        if (CanReoad(actions) && Input.GetKeyDown(KeyCode.R))
+        {
+            actions.SwitchState(actions.reloadState);
+        }
+    }
+
+    bool CanReoad(ActionStateManager actions)
+    {
+        if (actions.ammo.currentAmmo == actions.ammo.clipSize) return false;
+        if (actions.ammo.extraAmmo == 0) return false;
+        else return true;
+
     }
 }

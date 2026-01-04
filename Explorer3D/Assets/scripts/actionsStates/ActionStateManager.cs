@@ -2,15 +2,38 @@ using UnityEngine;
 
 public class ActionStateManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    ActionBaseState currentState;
+    public ReloadState reloadState = new ReloadState();
+    public DefaltState defaltState = new DefaltState();
+
+    public GameObject currentWepon;
+    [HideInInspector] public WeponAmmo ammo;
+
+    [HideInInspector] public Animator anim;
+
+
+    private void Start()
     {
-        
+        SwitchState(defaltState);
+        ammo = currentWepon.GetComponent<WeponAmmo>();
+        anim = GetComponent<Animator>();
+        Debug.Log("ammo in action manager: " + ammo.currentAmmo);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void SwitchState(ActionBaseState state)
+    { 
+        currentState = state;
+        state.EnterState(this);
     }
+
+    private void Update()
+    {
+        currentState.UpdateState(this);
+    }
+
+    public void Reload()
+    {
+        ammo.Reload();
+    }
+
 }
