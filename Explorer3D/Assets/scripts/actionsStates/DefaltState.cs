@@ -4,7 +4,8 @@ public  class DefaltState : ActionBaseState
 {
     public override void EnterState(ActionStateManager actions)
     {
-
+        actions.rhandAim.weight = 0;
+        actions.LhandIk.weight = 0; 
     }
 
     public override void UpdateState(ActionStateManager actions)

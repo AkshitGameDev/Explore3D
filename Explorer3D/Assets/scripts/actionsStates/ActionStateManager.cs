@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class ActionStateManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class ActionStateManager : MonoBehaviour
 
     [HideInInspector] public Animator anim;
 
+    public MultiAimConstraint rhandAim;
+
+    public TwoBoneIKConstraint LhandIk;
 
     private void Start()
     {

@@ -447,6 +447,8 @@ MonoBehaviour:
   currentWepon: {fileID: 1491911872}
   ammo: {fileID: 0}
   anim: {fileID: 0}
+  rhandAim: {fileID: 1763319454}
+  LhandIk: {fileID: 924049492}
 --- !u!1 &238800223
 GameObject:
   m_ObjectHideFlags: 0
