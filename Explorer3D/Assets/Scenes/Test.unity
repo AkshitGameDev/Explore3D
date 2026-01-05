@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 199935872}
   - component: {fileID: 199935877}
   - component: {fileID: 199935878}
+  - component: {fileID: 199935881}
   - component: {fileID: 199935879}
   - component: {fileID: 199935880}
   m_Layer: 7
@@ -431,6 +432,23 @@ MonoBehaviour:
   - m_Rig: {fileID: 103074596}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &199935881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199935871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c8d01e06a1c8043907341fc69d1de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionStateManager
+  currentWepon: {fileID: 1491911872}
+  ammo: {fileID: 0}
+  anim: {fileID: 0}
+  rhandAim: {fileID: 1763319454}
+  LhandIk: {fileID: 924049492}
 --- !u!1 &238800223
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,7 +1349,7 @@ Transform:
   m_GameObject: {fileID: 1435693558}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 233.11932, y: -248.70166, z: 500.5}
+  m_LocalPosition: {x: 233.11932, y: 0, z: 500.5}
   m_LocalScale: {x: 1000, y: 1000, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
