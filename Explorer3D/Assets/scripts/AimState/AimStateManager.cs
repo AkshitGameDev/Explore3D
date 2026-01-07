@@ -40,6 +40,14 @@ public class AimStateManager : MonoBehaviour
             Debug.LogError("CinemachineVirtualCamera not found!");
     }
 
+    public bool isHipFiring()
+    {
+
+        if(currentState == hip) return false;
+
+        return true;
+    }
+
     void Start()
     {
         SwitchState(hip);

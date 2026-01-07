@@ -17,12 +17,14 @@ public class WeponManager : MonoBehaviour
     WeponAmmo ammo;
 
     ActionStateManager ActionStateManager;
+    AimStateManager AimStateManager;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         ActionStateManager = GetComponentInParent<ActionStateManager>();
+        AimStateManager = GetComponentInParent<AimStateManager>();
         aim = GetComponentInParent<AimStateManager>();
         fireRateTimer = fireRate;
         ActionStateManager = GetComponentInParent<ActionStateManager>();
@@ -32,7 +34,8 @@ public class WeponManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ShouldFire())
+
+        if(ShouldFire() && AimStateManager.isHipFiring() && !ActionStateManager.isReloading() )
         {
             Fire();
         }

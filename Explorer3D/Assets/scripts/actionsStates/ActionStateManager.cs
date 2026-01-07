@@ -35,6 +35,11 @@ public class ActionStateManager : MonoBehaviour
         currentState.UpdateState(this);
     }
 
+    public bool isReloading()
+    {
+        return currentState == reloadState;
+    }
+
     public void WeponReloaded()
     {
         ammo.Reload();

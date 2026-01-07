@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AimStateManager
   xAxis:
-    Value: 300
+    Value: 360
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 0
@@ -373,7 +373,7 @@ MonoBehaviour:
       Time: 0
     Restrictions: 0
   yAxis:
-    Value: 300
+    Value: 360
     Center: 0
     Range: {x: -60, y: 60}
     Wrap: 0
@@ -383,13 +383,13 @@ MonoBehaviour:
       Time: 0
     Restrictions: 0
   camFollowPos: {fileID: 1542305263}
-  sensitivity: 1.6
+  sensitivity: 0.5
   anim: {fileID: 0}
   vCam: {fileID: 0}
-  adsFov: 40
+  adsFov: 50
   hipFov: 0
   curFov: 0
-  shoothSpeed: 10
+  shoothSpeed: 8
   aimPos: {fileID: 1654647867}
   actualAimPos: {x: 0, y: 0, z: 0}
   aimSmoothSpeed: 20
@@ -413,12 +413,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'mixamorig1:RightHand'\n\tTransform 'mixamorig1:Hips'\n\tTransform
-    'mixamorig1:LeftHand'\n\tTransform 'mixamorig1:RightForeArm'\n\tTransform 'mixamorig1:Neck'\n\tTransform
-    'mixamorig1:LeftArm'\n\tTransform 'mixamorig1:Head'\n\tTransform 'mixamorig1:LeftForeArm'\n\tTransform
-    'mixamorig1:Spine'\n\tTransform 'mixamorig1:RightHand'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
