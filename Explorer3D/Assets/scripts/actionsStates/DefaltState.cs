@@ -10,6 +10,8 @@ public  class DefaltState : ActionBaseState
 
     public override void UpdateState(ActionStateManager actions)
     {
+        actions.rhandAim.weight = Mathf.Lerp(actions.rhandAim.weight, 1, 10 * Time.deltaTime );
+        actions.LhandIk.weight = Mathf.Lerp(actions.LhandIk.weight, 1, 10 * Time.deltaTime );
         if (CanReoad(actions) && Input.GetKeyDown(KeyCode.R))
         {
             actions.SwitchState(actions.reloadState);

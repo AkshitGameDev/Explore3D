@@ -21,7 +21,7 @@ public class ActionStateManager : MonoBehaviour
         SwitchState(defaltState);
         ammo = currentWepon.GetComponent<WeponAmmo>();
         anim = GetComponent<Animator>();
-        Debug.Log("ammo in action manager: " + ammo.currentAmmo);
+        //Debug.Log("ammo in action manager: " + ammo.currentAmmo);
     }
 
     public void SwitchState(ActionBaseState state)
@@ -39,7 +39,12 @@ public class ActionStateManager : MonoBehaviour
     {
         ammo.Reload();
         SwitchState(defaltState);
-        Debug.Log("Reload compleate...");
+        //Debug.Log("Reload compleate...");
     }
 
+    public void PlayReloadingSound()
+    {
+        AudioManager.instance.PlayOneShot(AudioManager.instance.reloadClip);
+    }
+   
 }
