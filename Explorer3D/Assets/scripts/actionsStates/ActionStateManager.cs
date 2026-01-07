@@ -35,9 +35,11 @@ public class ActionStateManager : MonoBehaviour
         currentState.UpdateState(this);
     }
 
-    public void Reload()
+    public void WeponReloaded()
     {
         ammo.Reload();
+        SwitchState(defaltState);
+        Debug.Log("Reload compleate...");
     }
 
 }

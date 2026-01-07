@@ -18,6 +18,7 @@ public  class DefaltState : ActionBaseState
 
     bool CanReoad(ActionStateManager actions)
     {
+        //Debug.Log("Checking can reload...");
         if (actions.ammo.currentAmmo == actions.ammo.clipSize) return false;
         if (actions.ammo.extraAmmo == 0) return false;
         else return true;
