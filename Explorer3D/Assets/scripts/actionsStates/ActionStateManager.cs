@@ -3,7 +3,7 @@ using UnityEngine.Animations.Rigging;
 
 public class ActionStateManager : MonoBehaviour
 {
-    ActionBaseState currentState;
+    [HideInInspector] public ActionBaseState currentState;
     public ReloadState reloadState = new ReloadState();
     public DefaltState defaltState = new DefaltState();
 

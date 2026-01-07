@@ -16,12 +16,16 @@ public class WeponManager : MonoBehaviour
 
     WeponAmmo ammo;
 
+    ActionStateManager ActionStateManager;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        ActionStateManager = GetComponentInParent<ActionStateManager>();
         aim = GetComponentInParent<AimStateManager>();
         fireRateTimer = fireRate;
+        ActionStateManager = GetComponentInParent<ActionStateManager>();
         ammo = GetComponent<WeponAmmo>();
     }
 
@@ -32,7 +36,7 @@ public class WeponManager : MonoBehaviour
         {
             Fire();
         }
-        Debug.Log("ammo: " + ammo.currentAmmo);
+        //Debug.Log("ammo: " + ammo.currentAmmo);
     }
 
     bool ShouldFire()
@@ -54,6 +58,7 @@ public class WeponManager : MonoBehaviour
 
     void Fire()
     {
+        
         fireRateTimer = 0f;
         barrelPosition.LookAt(aim.aimPos);
         for(int i = 0; i < bulletPerShot; i++)
