@@ -3,7 +3,7 @@ using UnityEngine.Animations.Rigging;
 
 public class ActionStateManager : MonoBehaviour
 {
-    ActionBaseState currentState;
+    [HideInInspector] public ActionBaseState currentState;
     public ReloadState reloadState = new ReloadState();
     public DefaltState defaltState = new DefaltState();
 
@@ -21,7 +21,7 @@ public class ActionStateManager : MonoBehaviour
         SwitchState(defaltState);
         ammo = currentWepon.GetComponent<WeponAmmo>();
         anim = GetComponent<Animator>();
-        Debug.Log("ammo in action manager: " + ammo.currentAmmo);
+        //Debug.Log("ammo in action manager: " + ammo.currentAmmo);
     }
 
     public void SwitchState(ActionBaseState state)
@@ -35,9 +35,21 @@ public class ActionStateManager : MonoBehaviour
         currentState.UpdateState(this);
     }
 
-    public void Reload()
+    public bool isReloading()
     {
-        ammo.Reload();
+        return currentState == reloadState;
     }
 
+    public void WeponReloaded()
+    {
+        ammo.Reload();
+        SwitchState(defaltState);
+        //Debug.Log("Reload compleate...");
+    }
+
+    public void PlayReloadingSound()
+    {
+        AudioManager.instance.PlayOneShot(AudioManager.instance.reloadClip);
+    }
+   
 }

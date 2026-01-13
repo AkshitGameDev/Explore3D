@@ -26,8 +26,12 @@ public class AimStateManager : MonoBehaviour
     [SerializeField] float aimSmoothSpeed = 20f;
     [SerializeField] LayerMask aimMask;
 
+    public static AimStateManager instance;
+
     private void Awake()
     {
+
+        instance = this;
         anim = GetComponent<Animator>();
         Debug.Log("AimStateManager Awake: ", anim);
         vCam = GetComponentInChildren<CinemachineCamera>();
@@ -36,10 +40,20 @@ public class AimStateManager : MonoBehaviour
             Debug.LogError("CinemachineVirtualCamera not found!");
     }
 
+    public bool isHipFiring()
+    {
+
+        if(currentState == hip) return false;
+
+        return true;
+    }
+
     void Start()
     {
         SwitchState(hip);
         hipFov = vCam.Lens.FieldOfView;
+        Cursor.lockState = CursorLockMode.Locked; 
+        Cursor.visible = false;
     }
 
     void Update()
@@ -76,7 +90,6 @@ public class AimStateManager : MonoBehaviour
 
     void LateUpdate()
     {
-        // Clamp pitch (camera up/down)
         float pitch = yAxis.Value;
         pitch = Mathf.Clamp(pitch, -89.9f, 89.9f);
 
@@ -86,7 +99,6 @@ public class AimStateManager : MonoBehaviour
             0f
         );
 
-        // Wrap yaw (player left/right) — infinite rotation
         float yaw = xAxis.Value;
 
         if (yaw > 180f) yaw -= 360f;

@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource source;
 
     public AudioClip shootClip;
+    public AudioClip reloadClip;
 
     void Awake()
     {
